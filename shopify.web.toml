@@ -1,0 +1,6 @@
+name = "shopify-app-remix-mongodb"
+roles = ["frontend", "backend"]
+webhooks_path = "/webhooks"
+
+[commands]
+dev = "npm exec remix vite:dev"

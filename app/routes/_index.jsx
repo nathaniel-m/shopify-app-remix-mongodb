@@ -1,7 +1,20 @@
+import { json, redirect } from "@remix-run/node";
+import { login } from "../lib/shopify.server";
+
+export const loader = async ({ request }) => {
+  const url = new URL(request.url);
+
+  if (url.searchParams.get("shop")) {
+    throw redirect(`/app?${url.searchParams.toString()}`);
+  }
+
+  return json({ showForm: Boolean(login) });
+};
+
 export const meta = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Remix - Mongo" },
+    { name: "description", content: "Remix - Mongo!" },
   ];
 };
 

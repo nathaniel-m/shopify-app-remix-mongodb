@@ -4,9 +4,23 @@ This is a guide on using this repo.
 
 - Run `npm run install` to install dependencies if you haven't already.
 
-  - Efforts have have been made to ensuring we're using the latest package versions, and some incompatibility issues always pop up while installing. 
+- Run `npm run ngrok` to generate your subdomain. Copy the `https://<your-url>` domain you will need this as you setup the app. 
+
+- Create a new app (Public or Custom) from your [Shopify Partner Dashboard](https://partners.shopify.com).
+  - In the Shopify Partner Dashboard > Apps > _Your App Name_ > Configuration
+      - In the URLs section
+        - App URL: URL generated from Ngrok `https://<your-url>`
+        - Allowed Redirection URL(s):
+          - `https://<your-url>/auth/callback`
 
 - Build your `.env` file based on `.env.example`
+
+  - `SHOPIFY_API_KEY`: App API key. *In the Shopify Partner Dashboard*
+  - `SHOPIFY_API_SECRET`: App secret. *In the Shopify Partner Dashboard*
+  - `SHOPIFY_API_SCOPES`: Scopes required by your Shopify app. A list of access scopes can be found [here](https://shopify.dev/api/usage/access-scopes)
+  - `SHOPIFY_APP_URL`: URL generated from Ngrok `https://<your-url>`
+  - `SHOPIFY_API_VERSION`: Pre-filled to the latest version. 
+  - `MONGO_URL`: Mongo connection URL. *`mongodb+srv://<username>:<password>@<database>.<url.mongodb.net>`*
 
 - NPM Scripts
 
@@ -16,5 +30,4 @@ This is a guide on using this repo.
 
 - [ ] Running App
 
-  - In your terminal window, run `npm run ngrok` to create a ngrok instance if you haven't already.
-  - In another terminal window (preferrably in your IDE), `npm run dev` or `npm run start` depending on how you want to test your app.
+  - In terminal window `npm run dev` or `npm run start` depending on how you want to test your app.
