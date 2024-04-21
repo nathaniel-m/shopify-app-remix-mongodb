@@ -12,6 +12,9 @@ Changelog
 
 
 ## Changes
+### 0.1.1 (April 21, 2024)
+
+* [FEATURE] Added support for Netlify Deploy
 
 ### 0.1.0 (April 21, 2024)
 
