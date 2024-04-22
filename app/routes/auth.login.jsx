@@ -10,7 +10,6 @@ import {
   Text,
   TextField,
 } from "@shopify/polaris";
-import polarisTranslations from "@shopify/polaris/locales/en.json";
 
 import { login } from "../lib/shopify.server";
 import { loginErrorMessage } from "../error.server";
@@ -18,7 +17,7 @@ import { loginErrorMessage } from "../error.server";
 export const loader = async ({ request }) => {
   const errors = loginErrorMessage(await login(request));
 
-  return json({ errors, polarisTranslations });
+  return json({ errors });
 };
 
 export const action = async ({ request }) => {
@@ -36,7 +35,7 @@ export default function Auth() {
   const { errors } = actionData || loaderData;
 
   return (
-    <PolarisAppProvider i18n={loaderData.polarisTranslations}>
+    <PolarisAppProvider>
       <Page>
         <Card>
           <Form method="post">
