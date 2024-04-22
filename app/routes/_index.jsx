@@ -1,5 +1,7 @@
 import { json, redirect } from "@remix-run/node";
+import { Form, useLoaderData } from "@remix-run/react";
 import { login } from "../lib/shopify.server";
+import tailwind from "../tailwind.css?url"
 
 export const loader = async ({ request }) => {
   const url = new URL(request.url);
@@ -11,6 +13,10 @@ export const loader = async ({ request }) => {
   return json({ showForm: Boolean(login) });
 };
 
+export function links() {
+  return [{ rel: 'stylesheet', href: tailwind }]
+}
+
 export const meta = () => {
   return [
     { title: "Remix - Mongo" },
@@ -20,33 +26,39 @@ export const meta = () => {
 
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
+    <div className="">
+    <div className="">
+      <h1 className="">A short heading about [your app]</h1>
+      <p className="">
+        A tagline about [your app] that describes your value proposition.
+      </p>
+      
+        <Form className="" method="post" action="/auth/login">
+          <label className="">
+            <span>Shop domain</span>
+            <input className="" type="text" name="shop" />
+            <span>e.g: my-shop-domain.myshopify.com</span>
+          </label>
+          <button className="" type="submit">
+            Log in
+          </button>
+        </Form>
+      
+      <ul className="">
         <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
+          <strong>Product feature</strong>. Some detail about your feature and
+          its benefit to your customer.
         </li>
         <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
+          <strong>Product feature</strong>. Some detail about your feature and
+          its benefit to your customer.
         </li>
         <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
+          <strong>Product feature</strong>. Some detail about your feature and
+          its benefit to your customer.
         </li>
       </ul>
     </div>
+  </div>
   );
 }

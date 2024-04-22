@@ -12,6 +12,11 @@ Changelog
 
 
 ## Changes
+
+### 0.1.2 (April 22, 2024)
+
+* [FEATURE] Added support for Tailwindcss
+
 ### 0.1.1 (April 21, 2024)
 
 * [FEATURE] Added support for Netlify Deploy
