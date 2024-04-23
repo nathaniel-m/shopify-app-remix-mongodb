@@ -11,12 +11,11 @@ export default function AuthForm() {
       <Form className="space-y-6" method="post" id="auth-form">
         <div>
           <label
-            for="ShopDomain"
             className="block text-sm font-medium leading-6 text-gray-900 dark:text-100"
           >
             Shop domain
           </label>
-          <div class="mt-2">
+          <div className="mt-2">
             <input
               id="shop"
               name="shop"
@@ -46,7 +45,7 @@ export default function AuthForm() {
       <div>
         <a
           href="https://apps.shopify.com/search?q=badges"
-          class="flex w-full justify-center rounded-md px-3 py-1.5 bg-transparent outline outline-2 outline-600 shadow-sm text-950 dark:text-white hover:bg-500 focus:ring-4 font-medium text-sm dark:hover:bg-500 focus:outline-none "
+          className="flex w-full justify-center rounded-md px-3 py-1.5 bg-transparent outline outline-2 outline-600 shadow-sm text-950 dark:text-white hover:bg-500 focus:ring-4 font-medium text-sm dark:hover:bg-500 focus:outline-none "
         >
           Shopify
         </a>
