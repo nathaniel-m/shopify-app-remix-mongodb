@@ -13,6 +13,10 @@ Changelog
 
 ## Changes
 
+### 0.1.3 (April 23, 2024)
+
+* [UI] Designed the index page 
+
 ### 0.1.2 (April 22, 2024)
 
 * [FEATURE] Added support for Tailwindcss

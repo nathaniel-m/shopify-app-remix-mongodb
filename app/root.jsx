@@ -5,6 +5,8 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import tailwind from "./tailwind.css?url"
+
 
 export function Layout({ children }) {
   return (
@@ -15,13 +17,17 @@ export function Layout({ children }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body >
         {children}
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
   );
+}
+
+export function links() {
+  return [{ rel: 'stylesheet', href: tailwind }]
 }
 
 export default function App() {

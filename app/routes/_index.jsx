@@ -1,7 +1,11 @@
-import { json, redirect } from "@remix-run/node";
-import { Form, useLoaderData } from "@remix-run/react";
+import { redirect } from "@remix-run/node";
+
+import Tailwind from "../tailwind.css?url";
+import Navbar from "../components/navbar";
+import AuthForm from "../components/authForm";
 import { login } from "../lib/shopify.server";
-import tailwind from "../tailwind.css?url"
+
+import { loginErrorMessage } from "../error.server";
 
 export const loader = async ({ request }) => {
   const url = new URL(request.url);
@@ -9,12 +13,16 @@ export const loader = async ({ request }) => {
   if (url.searchParams.get("shop")) {
     throw redirect(`/app?${url.searchParams.toString()}`);
   }
+  return null;
+};
 
-  return json({ showForm: Boolean(login) });
+export const action = async ({ request }) => {
+  const errors = loginErrorMessage(await login(request));
+  console.log("errors", errors);
 };
 
 export function links() {
-  return [{ rel: 'stylesheet', href: tailwind }]
+  return [{ rel: "stylesheet", href: Tailwind }];
 }
 
 export const meta = () => {
@@ -26,39 +34,20 @@ export const meta = () => {
 
 export default function Index() {
   return (
-    <div className="">
-    <div className="">
-      <h1 className="">A short heading about [your app]</h1>
-      <p className="">
-        A tagline about [your app] that describes your value proposition.
-      </p>
-      
-        <Form className="" method="post" action="/auth/login">
-          <label className="">
-            <span>Shop domain</span>
-            <input className="" type="text" name="shop" />
-            <span>e.g: my-shop-domain.myshopify.com</span>
-          </label>
-          <button className="" type="submit">
-            Log in
-          </button>
-        </Form>
-      
-      <ul className="">
-        <li>
-          <strong>Product feature</strong>. Some detail about your feature and
-          its benefit to your customer.
-        </li>
-        <li>
-          <strong>Product feature</strong>. Some detail about your feature and
-          its benefit to your customer.
-        </li>
-        <li>
-          <strong>Product feature</strong>. Some detail about your feature and
-          its benefit to your customer.
-        </li>
-      </ul>
+    <div className="bg-50 dark:bg-black min-h-screen lg:bg-hero-lt bg-no-repeat bg-cover lg:dark:bg-hero-dk">
+      <Navbar />
+      <div className="">
+        <div className="text-700 dark:text-800 mt-36 text-5xl font-bold flex justify-center ">
+          Increase Sales and Confidence
+        </div>
+        <div className="text-950 dark:text-50 mt-4 text-4xl font-bold flex justify-center ">
+          with Secure Payment Badges
+        </div>
+      </div>
+
+      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <AuthForm />
+      </div>
     </div>
-  </div>
   );
 }
