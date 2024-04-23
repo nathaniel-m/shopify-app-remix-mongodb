@@ -13,9 +13,9 @@ export default function Index() {
     <>
     <Page
       fullWidth
-      title="Rapid Hover"
+      title="Remongify | Badges"
       primaryAction={{ content: "Preview on Store" }}
-      secondaryActions={{content: "Change Plan"}}
+      secondaryAction={{content: "Change Plan"}}
     >
       <Layout>
         <Layout.Section>
