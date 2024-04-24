@@ -6,6 +6,7 @@ This is a starter tamplate for shopify apps using remix and vite.
 
 - [Remix](https://remix.run/docs) 
 - [Remix - Vite](https://remix.run/docs/en/main/future/vite) 
+- [Better Stack](https://betterstack.com/logs) - For Logging
 
 
 ## Setup

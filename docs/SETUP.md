@@ -13,6 +13,18 @@ This is a guide on using this repo.
         - Allowed Redirection URL(s):
           - `https://<your-url>/auth/callback`
 
+- I use Pino and Betterstack for logging.
+  - Logs are stored in a file `app.log` in the `app` directory and sen to Better Stack
+  - If you do not want to use Better Stack remove the transport in `lib/logger.server.js`
+  - Create a new betterstack account at [Better Stack](https://betterstack.com/logs)
+  - In the Sources Section
+    - Connect Source
+      - Name the Source
+      - Choose Javascript Node for the Platform
+      - Create Source
+  - Make note of the Source token for the .env file later
+
+
 - Build your `.env` file based on `.env.example`
 
   - `SHOPIFY_API_KEY`: App API key. *In the Shopify Partner Dashboard*
@@ -21,6 +33,7 @@ This is a guide on using this repo.
   - `SHOPIFY_APP_URL`: URL generated from Ngrok `https://<your-url>`
   - `SHOPIFY_API_VERSION`: Pre-filled to the latest version. 
   - `MONGO_URL`: Mongo connection URL. *`mongodb+srv://<username>:<password>@<database>.<url.mongodb.net>`*
+  - `LOGTAIL_PINO_KEY` : Source Token. *In the betterstack sources config* 
 
 - NPM Scripts
 
