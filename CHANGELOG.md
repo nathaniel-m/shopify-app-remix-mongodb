@@ -13,6 +13,14 @@ Changelog
 
 ## Changes
 
+### 0.1.5 (April 24, 2024)
+
+* [FEATURE] Added MongoDB  
+
+### 0.1.4 (April 24, 2024)
+
+* [FEATURE] Added Pino Logging with Transport to Better Stack 
+
 ### 0.1.3 (April 23, 2024)
 
 * [UI] Designed the index page 
