@@ -12,6 +12,11 @@ Changelog
 
 
 ## Changes
+### 0.1.6 (April 24, 2024)
+
+* [CHANGE] Removed MongoDB package for db storage
+* [FEATURE] Added Prisma for db storage
+* [FEATURE] Added support for webhooks
 
 ### 0.1.5 (April 24, 2024)
 

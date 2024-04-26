@@ -1,7 +1,15 @@
-import { MongoClient } from "mongodb";
+import { PrismaClient } from "@prisma/client";
 
-let mongoConnection = process.env.MONGO_URL || "";
+let prisma;
+let isProd = process.env.NODE_ENV === "production";
 
-let mongodb = new MongoClient(mongoConnection);
+if (isProd) {
+  prisma = new PrismaClient();
+} else {
+  if (!global.prisma) {
+    global.prisma = new PrismaClient();
+  }
+  prisma = global.prisma;
+}
 
-export default mongodb;
+export default prisma;

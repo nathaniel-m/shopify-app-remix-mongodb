@@ -13,6 +13,13 @@ This is a guide on using this repo.
         - Allowed Redirection URL(s):
           - `https://<your-url>/auth/callback`
 
+- I use mongoDb for my database
+  - Create a mongoDB account
+    - Create a deployment (for dev I make sure to choose M0 Free) 
+    - Setup a User 
+    - In the Connect to your application choose the `drivers`
+    - Copy the connection string from step 3. This will be entered into the .env file for `MONGO_URL`
+
 - I use Pino and Betterstack for logging.
   - Logs are stored in a file `app.log` in the `app` directory and sen to Better Stack
   - If you do not want to use Better Stack remove the transport in `lib/logger.server.js`
@@ -32,7 +39,7 @@ This is a guide on using this repo.
   - `SHOPIFY_API_SCOPES`: Scopes required by your Shopify app. A list of access scopes can be found [here](https://shopify.dev/api/usage/access-scopes)
   - `SHOPIFY_APP_URL`: URL generated from Ngrok `https://<your-url>`
   - `SHOPIFY_API_VERSION`: Pre-filled to the latest version. 
-  - `MONGO_URL`: Mongo connection URL. *`mongodb+srv://<username>:<password>@<database>.<url.mongodb.net>`*
+  - `MONGO_URL`: Mongo connection URL. *`mongodb+srv://<username>:<password>@<database>.<url.mongodb.net>/<db_name>`*
   - `LOGTAIL_PINO_KEY` : Source Token. *In the betterstack sources config* 
 
 - NPM Scripts

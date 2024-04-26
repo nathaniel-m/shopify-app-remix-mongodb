@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGO_URL")
+}
+
+model shopify_sessions {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  accessToken String
+  id_         String  @map("id")
+  isOnline    Boolean
+  scope       String
+  shop        String
+  state       String
+}
