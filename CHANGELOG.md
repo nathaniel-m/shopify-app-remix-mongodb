@@ -12,7 +12,14 @@ Changelog
 
 
 ## Changes
-### 0.1.6 (April 24, 2024)
+
+### 0.1.7 (April 29, 2024)
+
+* [CHANGE] Removed Prisma from shopify.server. Now uses Plain Mongo. Prisma is still used throughout the project. 
+* [FEATURE] Added merchant setup during install. 
+* [FEATURE] Added support for encryption.
+
+### 0.1.6 (April 25, 2024)
 
 * [CHANGE] Removed MongoDB package for db storage
 * [FEATURE] Added Prisma for db storage

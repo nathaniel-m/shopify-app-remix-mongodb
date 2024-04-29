@@ -1,5 +1,6 @@
 import { authenticate } from "../lib/shopify.server";
-import sessionService from "../services/sessionService";
+import sessionService from "../services/sessionService.server";
+import merchantService from "../services/merchantService.server";
 
 export const action = async ({ request }) => {
   const { topic, shop, session, admin } = await authenticate.webhook(request);
@@ -13,9 +14,9 @@ export const action = async ({ request }) => {
     case "APP_UNINSTALLED":
       if (session) {
         try {
-          console.log("APP_UNINSTALLED:");
-
           await sessionService.deleteSession(shop);
+          await merchantService.deleteMerchant(shop);
+          console.log("APP_UNINSTALLED: ", shop)
         } catch (error) {
           console.log("error:", error);
         } 

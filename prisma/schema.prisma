@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mongodb"
-  url      = env("MONGO_URL")
+  url      = env("PRISMA_MONGO_URL")
 }
 
 model shopify_sessions {
@@ -15,4 +15,16 @@ model shopify_sessions {
   scope       String
   shop        String
   state       String
+}
+
+model merchants {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  accessToken     String
+  plan            String
+  shop            String    @unique(map: "shop_1")
+  status          String
+  subscriptionId  String
+  scriptTagId     String
+  createdAt       DateTime @db.Date
+  updatedAt       DateTime @db.Date
 }

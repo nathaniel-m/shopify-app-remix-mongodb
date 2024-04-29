@@ -41,7 +41,8 @@ This is a guide on using this repo.
   - `SHOPIFY_API_VERSION`: Pre-filled to the latest version. 
   - `MONGO_URL`: Mongo connection URL. *`mongodb+srv://<username>:<password>@<database>.<url.mongodb.net>/<db_name>`*
   - `LOGTAIL_PINO_KEY` : Source Token. *In the betterstack sources config* 
-
+  - `ENCRYPTION_STRING` : String used for encrypyion service - if you lose this string all encrypted data is lost. keep it safe.
+  
 - NPM Scripts
 
   - `dev`: Run in dev mode.
