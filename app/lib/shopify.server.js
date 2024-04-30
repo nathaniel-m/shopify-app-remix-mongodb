@@ -30,7 +30,7 @@ const shopify = shopifyApp({
         //await merchantService.merchantLogin(credentials);
       } else {
         // Register
-        await merchantService.merchantRegister(credentials);
+        await merchantService.registerMerchant(credentials);
       }
     },
   },

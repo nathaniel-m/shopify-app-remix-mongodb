@@ -13,6 +13,9 @@ Changelog
 
 ## Changes
 
+* [CHANGE] Renamed merchantRegister to registerMerchant
+* [FEATURE] Added settings setup during install. 
+
 ### 0.1.7 (April 29, 2024)
 
 * [CHANGE] Removed Prisma from shopify.server. Now uses Plain Mongo. Prisma is still used throughout the project. 

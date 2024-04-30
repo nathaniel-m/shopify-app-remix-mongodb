@@ -28,3 +28,10 @@ model merchants {
   createdAt       DateTime @db.Date
   updatedAt       DateTime @db.Date
 }
+
+model settings {
+  id                    String       @id @default(auto()) @map("_id") @db.ObjectId
+  shop                  String       @unique(map: "shop_1")
+  createdAt             DateTime @db.Date
+  updatedAt              DateTime @db.Date
+}

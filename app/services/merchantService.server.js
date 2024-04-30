@@ -1,6 +1,7 @@
 import prisma from "../lib/db.server";
 import logger from "../lib/logger.server";
 import encryption from "../lib/encryption.server";
+import settingsService from "./settingsService.server";
 
 const MERCHANT_ENUM = {
   STATUS: {
@@ -93,12 +94,16 @@ const merchantStatus = async (shop) => {
   return response;
 };
 
-const merchantRegister = async (credentials) => {
+const registerMerchant = async (credentials) => {
   const { shop } = credentials;
 
   // Create Merchant
   await createMerchant(credentials);
+
+  // Create Settings Data
+  await settingsService.createSettings(shop);
 };
+
 
 const deleteMerchant = async (shop) => {
   try {
@@ -114,6 +119,6 @@ const deleteMerchant = async (shop) => {
   return true;
 };
 
-const merchantService = { deleteMerchant, merchantStatus, merchantRegister };
+const merchantService = { deleteMerchant, merchantStatus, registerMerchant };
 
 export default merchantService;
