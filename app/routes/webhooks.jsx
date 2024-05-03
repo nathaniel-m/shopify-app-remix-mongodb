@@ -2,6 +2,7 @@ import { authenticate } from "../lib/shopify.server";
 import sessionService from "../services/sessionService.server";
 import merchantService from "../services/merchantService.server";
 import settingsService from "../services/settingsService.server";
+import shopService from "../services/shopService.server"
 
 export const action = async ({ request }) => {
   const { topic, shop, session, admin } = await authenticate.webhook(request);
@@ -18,6 +19,7 @@ export const action = async ({ request }) => {
           await sessionService.deleteSession(shop);
           await merchantService.deleteMerchant(shop);
           await settingsService.deleteSettings(shop);
+          await shopService.deleteShop(shop);
 
           console.log("APP_UNINSTALLED: ", shop)
         } catch (error) {

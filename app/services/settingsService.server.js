@@ -7,7 +7,7 @@ const DEFAULT_SETTINGS_ENUM = {
   
 };
 
-const update = async (shop, payload) => {
+const updateSettings = async (shop, payload) => {
   try {
     await prisma.settings.upsert({
       where: { shop: shop },
@@ -33,7 +33,7 @@ const createSettings = async (shop) => {
     shop,
   };
 
-  update(shop, payload);
+  updateSettings(shop, payload);
 
   logger.info("Settings Created on DB", { shop });
 };
@@ -52,6 +52,6 @@ const deleteSettings = async (shop) => {
     return true;
   };
 
-const settingsService = { deleteSettings, createSettings };
+const settingsService = { deleteSettings, createSettings, updateSettings };
 
 export default settingsService;

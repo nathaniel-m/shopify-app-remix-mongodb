@@ -1,9 +1,11 @@
 import { Banner, Layout, Page } from "@shopify/polaris";
 
 import { authenticate } from "../lib/shopify.server";
+import checkInitialSetup from "../middleware/checkInitialSetup.server";
 
 export const loader = async ({ request }) => {
   await authenticate.admin(request);
+  await checkInitialSetup(request);
 
   return null;
 };

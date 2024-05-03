@@ -19,7 +19,6 @@ model shopify_sessions {
 
 model merchants {
   id              String    @id @default(auto()) @map("_id") @db.ObjectId
-  accessToken     String
   plan            String
   shop            String    @unique(map: "shop_1")
   status          String
@@ -34,4 +33,16 @@ model settings {
   shop                  String       @unique(map: "shop_1")
   createdAt             DateTime @db.Date
   updatedAt              DateTime @db.Date
+}
+
+  model shops {
+  id                    String             @id @default(auto()) @map("_id") @db.ObjectId
+  myshopifyDomain       String             @unique(map: "myshopifyDomain_1")
+  id_                   String
+  email                 String
+  isActive              Boolean
+  name                  String
+  primaryDomain         String
+  createdAt             DateTime @db.Date
+  updatedAt             DateTime @db.Date
 }

@@ -1,7 +1,6 @@
 import "@shopify/shopify-app-remix/adapters/node";
 import { DeliveryMethod, shopifyApp } from "@shopify/shopify-app-remix/server";
 import { MongoDBSessionStorage } from "@shopify/shopify-app-session-storage-mongodb";
-import merchantService from "../services/merchantService.server";
 
 const shopify = shopifyApp({
   apiKey: process.env.SHOPIFY_API_KEY,
@@ -21,17 +20,6 @@ const shopify = shopifyApp({
   hooks: {
     afterAuth: async ({ session }) => {
       shopify.registerWebhooks({ session });
-      const { shop, accessToken } = session;
-      const credentials = { shop, accessToken };
-
-      const status = await merchantService.merchantStatus(shop);
-      if (status.isRegistered) {
-        // Login
-        //await merchantService.merchantLogin(credentials);
-      } else {
-        // Register
-        await merchantService.registerMerchant(credentials);
-      }
     },
   },
   future: {

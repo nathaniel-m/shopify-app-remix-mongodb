@@ -12,12 +12,11 @@ const MERCHANT_ENUM = {
   },
 };
 
-const update = async (shop, payload) => {
+const updateMerchant = async (shop, payload) => {
   try {
     await prisma.merchants.upsert({
       where: { shop: shop },
       update: {
-        accessToken: payload.accessToken,
         plan: payload.plan,
         status: payload.status,
         subscriptionId: payload.subId,
@@ -25,7 +24,6 @@ const update = async (shop, payload) => {
         updatedAt: new Date(),
       },
       create: {
-        accessToken: payload.accessToken,
         plan: payload.plan,
         status: payload.status,
         subscriptionId: payload.subId,
@@ -56,20 +54,16 @@ const getMerchant = async (shop) => {
   return merchant;
 };
 
-const createMerchant = async (credentials) => {
-  const { accessToken, shop } = credentials;
-  const encryptedToken = encryption.encrypt(JSON.stringify(accessToken));
-
+const createMerchant = async (shop) => {
   const payload = {
     shop,
-    accessToken: encryptedToken,
     status: MERCHANT_ENUM.STATUS.INACTIVE,
     subId: "",
     plan: "FREE",
     tagId: "",
   };
 
-  update(shop, payload);
+  updateMerchant(shop, payload);
 
   logger.info("User Created on DB", { shop });
 };
@@ -94,17 +88,6 @@ const merchantStatus = async (shop) => {
   return response;
 };
 
-const registerMerchant = async (credentials) => {
-  const { shop } = credentials;
-
-  // Create Merchant
-  await createMerchant(credentials);
-
-  // Create Settings Data
-  await settingsService.createSettings(shop);
-};
-
-
 const deleteMerchant = async (shop) => {
   try {
     await prisma.merchants.deleteMany({ where: { shop } });
@@ -119,6 +102,11 @@ const deleteMerchant = async (shop) => {
   return true;
 };
 
-const merchantService = { deleteMerchant, merchantStatus, registerMerchant };
+const merchantService = {
+  deleteMerchant,
+  merchantStatus,
+  createMerchant,
+  updateMerchant,
+};
 
 export default merchantService;

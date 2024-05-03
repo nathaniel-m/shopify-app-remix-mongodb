@@ -13,6 +13,17 @@ Changelog
 
 ## Changes
 
+### 0.1.9 (May 3, 2024)
+
+* [CHANGE] Moved Initial setup from shopify afterauth to setup on initial start.
+* [CHANGE] Changed update function to updateMerchant in merchantService
+* [CHANGE] Removed registerMerchant Function, use createMerchant now.
+* [CHANGE] No longer store access token in the merchant DB.
+* [CHANGE] Changed update function to updateSettings in settings Service
+* [FEATURE] Added shop setup during initial start. 
+
+### 0.1.8 (April 30, 2024)
+
 * [CHANGE] Renamed merchantRegister to registerMerchant
 * [FEATURE] Added settings setup during install. 
 
