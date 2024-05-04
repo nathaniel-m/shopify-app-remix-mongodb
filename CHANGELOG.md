@@ -13,6 +13,12 @@ Changelog
 
 ## Changes
 
+### 0.1.10 (May 4, 2024)
+
+* [CHANGE] Merchant is set to active by default, other status are removed for now. If a shop is in the db it is active. 
+* [CHANGE] Initial Setup Returns the Merchant.
+* [FEATURE] App Index now loads the current plan. 
+
 ### 0.1.9 (May 3, 2024)
 
 * [CHANGE] Moved Initial setup from shopify afterauth to setup on initial start.

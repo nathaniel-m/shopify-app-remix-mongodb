@@ -1,3 +1,5 @@
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 import { Banner, Layout, Page } from "@shopify/polaris";
 
 import { authenticate } from "../lib/shopify.server";
@@ -5,12 +7,15 @@ import checkInitialSetup from "../middleware/checkInitialSetup.server";
 
 export const loader = async ({ request }) => {
   await authenticate.admin(request);
-  await checkInitialSetup(request);
 
-  return null;
+  const merchant = await checkInitialSetup(request);
+
+  return json({ merchantPlan: merchant.plan || "" });
 };
 
 export default function Index() {
+  const { merchantPlan } = useLoaderData();
+
   return (
     <>
     <Page
